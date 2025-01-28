@@ -1,26 +1,19 @@
-import express from 'express';
+import express from "express";
+import UserController from "../controllers/userController.js";
+
 const router = express.Router({ mergeParams: true });
 
-import { createUser, createTable, getUsers, getUser, updateUser, deleteUser, deleteAll, deleteTable } from '../controllers/userController.js';
+// Table operations
+router.get("/create-table", UserController.createTable);
+router.delete("/delete-table", UserController.deleteTable);
 
-router.get('/create-table', createTable);
-
-router.post('/', createUser);
-
-router.get('/', getUsers);
-
-router.get('/:id', getUser);
-
-router.get('/name/:name', getUser);
-
-router.get('/email/:email', getUser);
-
-router.put('/:id', updateUser);
-
-router.delete('/:id', deleteUser);
-
-router.delete('/', deleteAll);
-
-router.delete('/delete-table', deleteTable);
+// User operations
+router.post("/", UserController.createUser);
+router.get("/", UserController.getUsers);
+router.delete("/", UserController.deleteAllUsers);
+router.get("/:id", UserController.getUser);
+router.put("/:id", UserController.updateUser);
+router.get("/search/name/:name", UserController.getUser);
+router.get("/search/email/:email", UserController.getUser);
 
 export default router;
