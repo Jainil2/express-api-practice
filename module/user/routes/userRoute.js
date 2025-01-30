@@ -6,9 +6,8 @@ import {
   handleUpdateUser,
 } from "../controllers/userController.js";
 
-const user_router = express.Router({ mergeParams: true });
+const user_router = express.Router();
 
-// Directly use the controller functions without wrapping them in an async function
 user_router.get("/", handleReadUsers);
 user_router.post("/", handleCreateUser);
 user_router.delete("/", handleDeleteUser);

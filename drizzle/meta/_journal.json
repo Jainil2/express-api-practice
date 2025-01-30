@@ -15,6 +15,13 @@
       "when": 1738228315078,
       "tag": "0001_smooth_nightmare",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1738234791471,
+      "tag": "0002_pink_tana_nile",
+      "breakpoints": true
     }
   ]
 }
