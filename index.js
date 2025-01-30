@@ -1,24 +1,14 @@
-import express from "express";
-import dotenv from "dotenv";
-import userRoute from "./routes/userRoute.js";
 import bodyParser from "body-parser";
+import express from "express";
 
-dotenv.config({ path: ".env.local" });
+import router from "./routes.js";
 
-if (!process.env.PORT) {
-  throw new Error("PORT is not defined in the environment variables.");
-}
-
-const app = express();
-
-// Middleware
+const app  = express();
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Routes
-app.use("/users", userRoute);
+app.use("/api", router);
 
-// Start server
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+app.listen(3000, () => {
+  console.log("Server is running on port 3000");
+})
