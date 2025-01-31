@@ -32,6 +32,6 @@ export class userNotFoundError extends UserError {
 
 export class unauthorizedActionError extends UserError {
     constructor(message = 'You do not have permission to perform this action') {
-        super('UnauthorizedActionError', message, 403)
+        super(message, 403)
     }
 }

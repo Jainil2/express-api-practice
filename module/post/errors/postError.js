@@ -1,4 +1,4 @@
-class PostErrors extends Error {
+export default class PostErrors extends Error {
     constructor(message) {
         super(message)
         this.name = 'PostErrors'
@@ -32,11 +32,3 @@ export class PostNotDeletedError extends PostErrors {
         this.name = 'PostNotDeletedError'
     }
 }
-
-export class unauthorizedActionError extends PostErrors {
-    constructor(message = 'You do not have permission to perform this action') {
-        super('UnauthorizedActionError', message, 403)
-    }
-}
-
-export default PostErrors

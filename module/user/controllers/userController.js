@@ -54,7 +54,6 @@ export async function handleLogin(req, res) {
             sameSite: 'Strict',
         })
         res.status(200).json({ message: 'Logged in successfully' })
-        // res.status(200).json({ token })
     } catch (error) {
         handleError(res, error, 'logging in')
     }
