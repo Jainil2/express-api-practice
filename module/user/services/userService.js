@@ -20,5 +20,5 @@ export function hashPassword(password) {
 }
 
 export function generateToken(payload) {
-    return jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h', algorithm: 'HS256' });
+    return jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h', algorithm: 'HS256' })
 }

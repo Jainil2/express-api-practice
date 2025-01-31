@@ -13,9 +13,9 @@ export const postTable = pgTable('post', {
     deletedAt: timestamp('deleted_at').defaultNow(),
 })
 
-export const postRelations = relations(postTable, ({one}) => ({
+export const postRelations = relations(postTable, ({ one }) => ({
     invitee: one(postTable, {
-        fields : [postTable.authorId],
-        references : [usersTable.id]
+        fields: [postTable.authorId],
+        references: [usersTable.id],
     }),
-}));
+}))

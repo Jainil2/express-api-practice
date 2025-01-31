@@ -2,7 +2,13 @@ import dotenv from 'dotenv'
 import { drizzle } from 'drizzle-orm/node-postgres'
 import { eq } from 'drizzle-orm'
 import { usersTable } from '../../../db/schema/users.js'
-import { verifyEmail, verifyPassword, AuthenticatePassword, hashPassword, generateToken } from '../services/userService.js'
+import {
+    verifyEmail,
+    verifyPassword,
+    AuthenticatePassword,
+    hashPassword,
+    generateToken,
+} from '../services/userService.js'
 import {
     userExistsError,
     invalidEmailError,
@@ -24,7 +30,7 @@ export async function login(user) {
     if (!match) {
         throw new unauthorizedActionError()
     }
-    return generateToken({ id: userExists[0].id})
+    return generateToken({ id: userExists[0].id })
 }
 
 export async function createUser(user) {
