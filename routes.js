@@ -1,7 +1,7 @@
-import express from "express";
-import user_router from "./module/user/routes/userRoute.js";
-const router = express.Router({ mergeParams: true });
+import express from 'express'
+import user_router from './module/user/routes/userRoute.js'
+const router = express.Router({ mergeParams: true })
 
-router.use("/user", user_router);
+router.use('/user', user_router)
 
-export default router;
+export default router
