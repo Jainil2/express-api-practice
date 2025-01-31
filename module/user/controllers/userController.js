@@ -1,5 +1,4 @@
-import { readUsers, updateUser, deleteUser, createUser } from '../repositories/usersRepository.js'
-
+import { readUsers, updateUser, deleteUser, createUser, login } from '../repositories/usersRepository.js'
 import UserError from '../errors/userError.js'
 
 function handleError(res, error, action) {
@@ -44,5 +43,28 @@ export async function handleDeleteUser(req, res) {
         res.status(200).json({ message: 'User deleted successfully' })
     } catch (error) {
         handleError(res, error, 'deleting user')
+    }
+}
+
+export async function handleLogin(req, res) {
+    try {
+        const token = await login(req.body)
+        res.cookie("token", token, {
+            httpOnly: true, 
+            sameSite: "Strict", 
+        });
+        res.status(200).json({ message: "Logged in successfully" });        
+        // res.status(200).json({ token })
+    } catch (error) {
+        handleError(res, error, 'logging in')
+    }
+}
+
+export async function handleLogout(req, res) {
+    try {
+        res.clearCookie("token");
+        res.status(200).json({ message: "Logged out successfully" });
+    } catch (error) {
+        handleError(res, error, 'logging out')
     }
 }

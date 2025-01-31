@@ -1,4 +1,5 @@
 import bycrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 
 export function verifyEmail(email) {
     const regex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/
@@ -16,4 +17,8 @@ export async function AuthenticatePassword(password, hash) {
 
 export function hashPassword(password) {
     return bycrypt.hash(password, 10)
+}
+
+export function generateToken(payload) {
+    return jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h', algorithm: 'HS256' });
 }
